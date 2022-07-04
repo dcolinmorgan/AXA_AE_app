@@ -38,7 +38,7 @@ EE.rename(columns={'value_x':'Lung','variable_y':'varaible','value_y':'value'},i
 # print(EE)
 
 app.layout = html.Div([
-
+###buttons/interactivity
     html.Div([
 
         dcc.Slider(
@@ -57,7 +57,7 @@ app.layout = html.Div([
               id='dropdown'
           )
     ]),
-
+###layout form
     html.Div([
             dcc.Graph(id='graph0'),
             dcc.Graph(
@@ -72,10 +72,11 @@ app.layout = html.Div([
 
 
 ])
-
+### interactive data query
 def get_data(data6,year_value,variable_value):
     return data6[(data6['year']==year_value)&(data6['variable']==variable_value)]
 
+### individual plot layouts with same input from query function
 @app.callback(
     Output("graph0", "figure"),
     Input("slider", "value"),
@@ -99,7 +100,7 @@ def plottt_geo(year_value,variable_value):
 def plottt_line(year_value,variable_value):
     df=get_data(DD,year_value,variable_value)
 
-    fig = px.line(data_frame=df, x='week', y='value',color='name')
+    fig = px.line(data_frame=df, x='weekA', y='value',color='name')
     return fig #.show()
 
 @app.callback(
@@ -107,9 +108,9 @@ def plottt_line(year_value,variable_value):
     Input("slider", "value"),
     Input("dropdown", "value"))
 def plottt_diag(year_value,variable_value):
-    # df=get_data(data6,year_value,variable_value)
+    df=get_data(data6,year_value,variable_value)
     # fig = px.line(data_frame=df, x='week', y='value',color='name')
-    fig = px.bar(data_frame=data6[data6['year']==year_value], x='diag2', y='value',color='name')
+    fig = px.bar(data_frame=df, x='diag2', y='value',color='name')
     return fig #.show()
 
 @app.callback(
