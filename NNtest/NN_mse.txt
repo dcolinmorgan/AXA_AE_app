@@ -1,0 +1,7 @@
+	var	,mse	site	order
+0	all	0.0018554541	QEH	orig
+1	all	2.8838868	QEH	shuf
+2	ae	0.0037106762	QEH	orig
+3	ae	3.5277917	QEH	shuf
+4	poll	0.0078683235	QEH	orig
+5	poll	2.916048	QEH	shuf
